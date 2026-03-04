@@ -1,0 +1,55 @@
+{
+  "name": "LaTeX Development",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "James-Yu.latex-workshop",
+        "valentjn.vscode-ltex",
+        "streetsidesoftware.code-spell-checker"
+      ],
+      "settings": {
+        "latex-workshop.latex.tools": [
+          {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+              "-interaction=nonstopmode",
+              "-file-line-error",
+              "%DOC%"
+            ]
+          },
+          {
+            "name": "xelatex",
+            "command": "xelatex",
+            "args": [
+              "-interaction=nonstopmode",
+              "-file-line-error",
+              "%DOC%"
+            ]
+          }
+        ],
+        "latex-workshop.latex.recipes": [
+          {
+            "name": "pdflatex",
+            "tools": ["pdflatex"]
+          },
+          {
+            "name": "xelatex",
+            "tools": ["xelatex"]
+          }
+        ],
+        "latex-workshop.view.pdf.viewer": "tab",
+        "latex-workshop.synctex.afterBuild.enabled": true
+      }
+    }
+  },
+  "postCreateCommand": "tlmgr update --self && tlmgr install scheme-basic latexmk",
+  "remoteUser": "vscode"
+}
