@@ -1,0 +1,232 @@
+name: Silas Shadowfoot
+level: 7
+class: Rogue
+archetype: Arcane Trickster
+background: Smuggler
+race: Lightfoot Halfling
+alignment: Neutral Good
+inspiration: 1
+proficiencyBonus: +3
+armorClass: 17
+initiative: 4
+speed: 25
+hitPoints: 51
+hitDice: 7d8
+passivePerception: 10
+abilityModifiers:
+  Strength: 10
+  Dexterity: 18 # Halfling: Your Dexterity score increases by 2 (so 4 here)
+  Constitution: 12
+  Intelligence: 12
+  Wisdom: 12
+  Charisma: 16 # Lightfoot Halfling: +2 on Charisma
+proficiencies:
+  savingThrows:
+    Dexterity: proficient
+    Intelligence: proficient
+  skills:
+    Acrobatics: proficient
+    Deception: expertise
+    Investigation: proficient
+    Persuasion: expertise
+    Stealth: proficient
+  other:
+    - Light Armor
+    - Simple Weapons
+    - Hand Crossbows
+    - Longswords
+    - Rapiers
+    - Shortswords
+    - Thieves' Tools (Expertise)
+languages:
+  - Common
+  - Halfling
+  - Thieves' Cant
+equipment:
+  - Rapier (Enchanted for +2 Atk Bonus)
+  - Shortbow
+  - Studded Leather Armor
+  - count: 2
+    name: Dagger
+  - Backpack
+  - count: 791
+    name: Ball Bearings
+  - 10ft String
+  - Bell
+  - count: 5
+    name: Candles
+  - Crowbar
+features:
+  - name: Lucky
+    description: |-
+      Roll a 1 on attack roll, ability check, or saving throw => reroll
+  - name: Brave
+    description: |-
+      Advantage on saving throws against being frightened
+  - name: Nimble
+    description: |-
+      Can move through space of larger creature
+  - name: Stealthy
+    description: |-
+      Can attempt to hide even when only obscured by a creature that is at least one size larger
+  - name: Sneak Attack
+    description: |-
+      Once per turn, deal extra 3d6 damage to a creature you hit with an attack if you have advantage on the attack roll or if another enemy of the target is within 5 feet of it and you don't have disadvantage on the attack roll.
+  - name: Thieves' Cant
+    description: |-
+      \begin{itemize}
+      \item Hide messages in seemingly normal conversation
+      \item Understand secret language of signs and symbols used to convey short, simple messages
+      \item Only understood by others who understand Thieves' Cant
+      \end{itemize}
+  - name: Cunning Action
+    description: |-
+      Take a bonus action on each of your turns in combat to Dash, Disengage, Hide, or Mage Hand.
+  - name: Down Low
+    description: |-
+      In a community, can always find a safe house to stay for free with our presence kept secret
+abilities:
+  - name: Rapier
+    category: Plain Damage
+    weapon:
+      subtype: melee
+      ability: Dexterity
+      proficiency: proficient
+      extraAttackBonus: +2 # **Enchanted!**
+      damage: 1d8+4 Piercing
+    oneline: ""
+    skipReference: true
+  - name: Shortbow
+    category: Plain Damage
+    weapon:
+      subtype: ranged
+      ability: Dexterity
+      proficiency: proficient
+      damage: 1d6+4 Piercing
+    oneline: "Ranged"
+    skipReference: true
+  - name: Faceless Cloak
+    category: Deception
+    ability: {}
+    oneline: |-
+      Advantage on deception checks; can change my voice
+    description: |-
+      Advantage on deception checks while worn; twice per day, can change my voice to a voice I've heard
+  - name: Mage Hand Legerdemain
+    category: Manipulation
+    cantrip:
+      castingTime: 1 Action
+      range: 30
+      duration: 1 Minute
+    oneline: |-
+      Make a hand to remote manipulate objects, etc
+    description: |-
+      A spectral, floating hand appears at a point you choose within range. The hand lasts for the duration or until you dismiss it as an action. The hand vanishes if it is ever more than 30 feet away from you or if you cast this spell again.
+
+      You can use your action to control the hand. You can use the hand to manipulate an object, open an unlocked door or container, stow or retrieve an item from an open container, or pour the contents out of a vial. You can move the hand up to 30 feet each time you use it.
+
+      The hand can't attack, activate magical items, or carry more than 10 pounds.
+
+      Starting at 3rd level, when you cast Mage Hand, you can make the spectral hand invisible, and you can perform the following additional tasks with it:
+
+      \begin{itemize}
+      \item You can stow one object the hand is holding in a container worn or carried by another creature.
+      \item You can retrieve an object in a container worn or carried by another creature.
+      \item You can use thieves' tools to pick locks and disarm traps at range.
+      \item You can perform one of these tasks without being noticed by a creature if you succeed on a Dexterity (Sleight of Hand) check contested by the creature's Wisdom (Perception) check.
+      \end{itemize}
+
+      In addition, you can use the bonus action granted by your Cunning Action to control the hand.
+  - name: Minor Illusion
+    category: Deception
+    cantrip:
+      castingTime: 1 action
+      range: 30
+      duration: 1 Minute
+    oneline: |-
+      Create a sound (whisper to scream) or image (no larger than 5-foot cube).
+    description: |-
+      You create a sound or an image of an object within range that lasts for the duration. The illusion also ends if you dismiss it as an action or cast this spell again.
+
+      If you create a sound, its volume can range from a whisper to a scream. It can be your voice, someone else’s voice, a lion’s roar, a beating of drums, or any other sound you choose. The sound continues unabated throughout the duration, or you can make discrete sounds at different times before the spell ends.
+
+      If you create an image of an object—such as a chair, muddy footprints, or a small chest—it must be no larger than a 5-foot cube. The image can’t create sound, light, smell, or any other sensory effect. Physical interaction with the image reveals it to be an illusion, because things can pass through it.
+
+      If a creature uses its action to examine the sound or image, the creature can determine that it is an illusion with a successful Intelligence (Investigation) check against your spell save DC. If a creature discerns the illusion for what it is, the illusion becomes faint to the creature.
+  - name: Mind Sliver
+    category: Plain Damage
+    cantrip:
+      castingTime: 1 action
+      range: 60
+      duration: 1 Round
+    oneline: |- # AT HIGHER LEVELS!
+      Target must succeed on Int save or take 2d6 psychic damage and subtract 1d4 from the next saving throw it makes.
+    description: |-
+      You drive a disorienting spike of psychic energy into the mind of one creature you can see within range. The target must succeed on an Intelligence saving throw or take 1d6 psychic damage and subtract 1d4 from the next saving throw it makes before the end of your next turn.
+
+      \textbf{\textit{At Higher Levels.}} This spell’s damage increases by 1d6 when you reach certain levels: 5th level (2d6), 11th level (3d6), and 17th level (4d6).
+  - name: Puppet
+    category: Manipulation
+    spell:
+      level: 1
+      castingTime: 1 action
+      range: 120
+      duration: Instantaneous
+    oneline: |-
+      On failed Con, move humanoid target up to 15ft in the direction you choose.
+    description: |-
+      Your gesture forces one humanoid you can see within range to make a Constitution saving throw. On a failed save, the target must move up to its speed in a direction you choose. In addition, you can cause the target to drop whatever it is holding. This spell has no effect on a humanoid that is immune to being charmed.
+  - name: Disguise Self
+    category: Deception
+    spell:
+      level: 1
+      castingTime: 1 action
+      range: Self
+      duration: 1 Hour
+    oneline: |-
+      Change appearance of self  to look like another person.
+    description: |-
+      You make yourself – including your clothing, armor, weapons, and other belongings on your person – look different until the spell ends or until you use your action to dismiss it. You can seem 1 foot shorter or taller and can appear thin, fat, or in between. You can’t change your body type, so you must adopt a form that has the same basic arrangement of limbs. Otherwise, the extent of the illusion is up to you.
+
+      The changes wrought by this spell fail to hold up to physical inspection. For example, if you use this spell to add a hat to your outfit, objects pass through the hat, and anyone who touches it would feel nothing or would feel your head and hair. If you use this spell to appear thinner than you are, the hand of someone who reaches out to touch you would bump into you while it was seemingly still in midair. To discern that you are disguised, a creature can use its action to inspect your appearance and must succeed on an Intelligence (Investigation) check against your spell save DC.
+  - name: Id Insinuation
+    category: Damage++
+    spell:
+      level: 1
+      castingTime: 1 action
+      range: 60
+      duration: Concentration, up to 1 Minute
+    oneline: |-
+      Target must succeed on Wis save or be incapacitated and take 1d12 psychic damage each turn.
+    description: |-
+      You unleash a torrent of conflicting desires in the mind of one creature you can see within range, impairing its ability to make decisions. The target must succeed on a Wisdom saving throw or be incapacitated. At the end of each of its turns, it takes 1d12 psychic damage, and it can then make another Wisdom saving throw. On a success, the spell ends on the target.
+  - name: Suggestion
+    category: Manipulation
+    spell:
+      level: 2
+      castingTime: 1 action
+      range: 30
+      duration: Concentration, up to 8 Hours
+    oneline: |-
+      Target must succeed on Wis save or follow a reasonable-sounding command (until damaged).
+    description: |-
+      You suggest a course of activity (limited to a sentence or two) and magically influence a creature you can see within range that can hear and understand you. Creatures that can’t be charmed are immune to this effect. The suggestion must be worded in such a manner as to make the course of action sound reasonable. Asking the creature to stab itself, throw itself onto a spear, immolate itself, or do some other obviously harmful act ends the spell.
+
+      The target must make a Wisdom saving throw. On a failed save, it purses the course of action you described to the best of its ability. The suggested course of action can continue for the entire duration. If the suggested activity can be completed in a shorter time, the spell ends when the subject finishes what it was asked to do.
+
+      You can also specify conditions that will trigger a special activity during the duration. For example, you might suggest that a knight give her warhorse to the first beggar she meets. If the condition isn’t met before the spell expires, the activity isn’t performed.
+
+      If you or any of your companions damage the target, the spell ends.
+  - name: Vortex Warp
+    category: Manipulation
+    spell:
+      level: 2
+      castingTime: 1 action
+      range: 90
+      duration: Instantaneous
+    oneline: |-
+      Target must succeed on Con save or be teleported somewhere.
+    description: |- # AT HIGHER LEVELS!
+      You magically twist space around another creature you can see within range. The target must succeed on a Constitution saving throw (the target can choose to fail), or the target is teleported to an unoccupied space of your choice that you can see within range. The chosen space must be on a surface or in a liquid that can support the target without the target having to squeeze.
+
+      \textbf{\textit{At Higher Levels.}} When you cast this spell using a spell slot of 3rd level or higher, the range of the spell increases by 30 feet for each slot level above 2nd.
