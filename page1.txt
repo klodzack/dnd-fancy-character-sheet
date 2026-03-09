@@ -1,0 +1,335 @@
+Silas Shadowfoot
+CHARACTER NAME
+
+STRENGTH
+
+10
+
+1
+
+Level 7 Rogue Arcane Trickster
+
+Smuggler
+
+Zack
+
+CLASS & LEVEL
+
+BACKGROUND
+
+PLAYER NAME
+
+Lightfoot Halfling
+
+Neutral Good
+
+∞
+
+RACE
+
+ALIGNMENT
+
+EXPERIENCE POINTS
+
+INSPIRATION
+
+17
+3
+
+ARMOR
+CLASS
+
+PROFICIENCY BONUS
+
+4
+
+25ft
+
+INITIATIVE
+
+SPEED
+
+I love gold but won't cheat
+a friend.
+PERSONALITY TRAITS
+
+0
+DEXTERITY
+
+18
+
+●
+
+●
+
++4
+
+0
+
+Strength
+
+7
+
+Dexterity
+
+1
+
+Constitution
+
+4
+
+Intelligence
+
+1
+
+Wisdom
+
+3
+
+Charisma
+
+CONSTITUTION
+
+Hit Point Maximum 51
+
+51
+CURRENT HIT POINTS
+
+TEMPORARY HIT POINTS
+
+12
+●
+
+INTELLIGENCE
+
+12
+
+●
+
++1
+WISDOM
+
+●
+
+12
++1
+CHARISMA
+
+●
+
+16
+●
+
++3
+
+10*
+
+Acrobatics (Dex)
+
+1
+
+Animal Handling (Wis)
+
+1
+
+Arcana (Int)
+
+0
+
+Athletics (Str)
+
+9*
+
+Deception (Cha)
+
+1
+
+History (Int)
+
+1
+
+Insight (Wis)
+
+Total
+
+3
+
+Intimidation (Cha)
+
+4
+
+Investigation (Int)
+
+1
+
+Medicine (Wis)
+
+1
+
+Nature (Int)
+
+1
+
+Perception (Wis)
+
+3
+
+Performance (Cha)
+
+9*
+
+Persuasion (Cha)
+
+1
+
+Religion (Int)
+
+4
+
+Sleight of Hand (Dex)
+
+10*
+
+Stealth (Dex)
+
+1
+
+Survival (Wis)
+
+5d8
+
+FAILURES
+
+ATK BONUS DAMAGE/TYPE
+
+Rapier
+
++10
+
+1d8+4 Piercing
+
+Shortbow
+
++7
+
+1d6+4 Piercing
+
+Rapier is enchanted for +2
+Atk Bonus
+
+Few people know the real
+me.
+FLAWS
+
+Lucky
+- Roll a 1? Reroll.
+- Attack roll, ability check, or saving
+throw
+Brave
+- Advantage on saving throws
+against being frightened
+Nimble
+- Can move through the space or
+any creature that is larger than self
+
+ATTACKS & SPELLCASTING
+
+CP
+
+- Light Armor
+- Simple weapons
+- Hand Crossbows
+- Longswords
+- Rapiers
+- Shortswords
+- Thieves' Tools (Expertise)
+- Common & Halfling Languages
+- Water Vehicles
+
+BONDS
+
+DEATH SAVES
+
+NAME
+
+PASSIVE WISDOM (PERCEPTION)
+
+OTHER PROFICIENCIES & LANGUAGES
+
+SUCCESSES
+
+HIT DICE
+
+SKILLS
+
+10
+
+IDEALS
+
+I give most of my profits to a
+charitable cause, and I don't like to
+brag about it.
+
+SAVING THROWS
+
++1
+
+I smuggle only to achieve a greater
+goal that benefits my community.
+
+SP
+
+16
+
+EP
+
+GP
+
+PP
+
+53
+
+- Rapier
+- Shortbow
+- Studded Leather armor
+- (2) Daggers
+- Backpack
+- (791) Ball Bearings
+- 10ft String
+- A bell
+- (5) Candles
+- A crowbar
+- A hammer
+- (10) Pitons
+- A hooded lantern
+- A tinderbox
+- A waterskin
+- Thieves' Tools
+- The Faceless Cloak
+- Jar of Strawberry Jam
+- 2 Bottles of Mead
+
+Stealthy
+- Can attempt to hide even when
+only obscured by a creature one size
+larger than self
+Sneak Attack
+- Once per turn
+- Deal extra 3d6 damage if:
+- Weapon is finesse or ranged,
+AND
+- Not disadvantage, AND
+- Advantage, OR
+- Another not-incapacitated
+enemy of target within 5ft of target
+- Extra damage increases with
+leveling up
+- Sacrifice one die to add Poison,
+Trip, or Withdraw
+
+EQUIPMENT
+TM & © 2014 Wizards of the Coast LLC. Permission is granted to photocopy this document for personal use.
+
+FEATURES & TRAITS
+
+

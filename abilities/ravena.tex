@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage{etoolbox}
+\usepackage{environ}
+\input{lib/abilities.tex}
+
+\begin{document}
+
+\begin{abilitycategory}
+    \abilitycategorytitle{Healing}
+
+    \begin{spell}
+        \abilitytitle{Healing Word}
+        \spellcastingtime{1 bonus action}
+        \spellrange{60 feet}
+        \spellduration{Instantaneous}
+        \begin{abilityusage}
+            Ranged, heal one person a lot (but less than Cure Wounds)
+        \end{abilityusage}
+        \begin{spelldescription}
+            A creature of your choice that you can see within range regains hit
+            points equal to 1d4 + your spellcasting ability modifier. This spell
+            has no effect on undead or constructs.
+
+            At Higher Levels. When you cast this spell using a spell slot of
+            2nd level or higher, the healing increases by 1d4 for each slot
+            level above 1st.
+        \end{spelldescription}
+    \end{spell}
+
+    \begin{spell}
+        \abilitytitle{Cure Wounds}
+        \spellcastingtime{1 action}
+        \spellrange{Touch}
+        \spellduration{Instantaneous}
+        \begin{abilityusage}
+            Touch one person to heal them a lot
+        \end{abilityusage}
+        \begin{spelldescription}
+            A creature you touch regains a number of hit points equal to 1d8 +
+            your spellcasting ability modifier. This spell has no effect on
+            undead or constructs.
+
+            At Higher Levels. When you cast this spell using a spell slot of
+            2nd level or higher, the healing increases by 1d8 for each slot
+            level above 1st.
+        \end{spelldescription}
+    \end{spell}
+\end{abilitycategory}
+
+\render
+
+\end{document}

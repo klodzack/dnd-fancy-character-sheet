@@ -1,0 +1,47 @@
+\xdef\abilityoverview{}
+\xdef\currentCategoryTitle{}
+\xdef\currentCategoryOverviewItems{}
+
+\NewEnviron{abilitycategory}{%
+  \xdef\currentCategoryTitle{}%
+  \xdef\currentCategoryOverviewItems{}%
+  \BODY%
+}[
+  \xdef\abilityoverview{
+    \abilityoverview
+
+    \noexpand\subsection*{\currentCategoryTitle}
+
+    \currentCategoryOverviewItems
+  }
+]
+\newcommand{\abilitycategorytitle}[1]{
+    \xdef\currentCategoryTitle{#1}%
+}
+
+
+\NewEnviron{spell}{
+  \xdef\currentAbilityTitle{Missing title!}
+  \BODY%
+}[
+  \xdef\currentCategoryOverviewItems{
+    \currentCategoryOverviewItems
+
+    \begin{itemize}
+    \item \currentAbilityTitle
+    \end{itemize}
+  }
+]
+\newcommand{\abilitytitle}[1]{
+  \xdef\currentAbilityTitle{#1}%
+}
+\newcommand{\spellcastingtime}[1]{}
+\newcommand{\spellrange}[1]{}
+\newcommand{\spellduration}[1]{}
+\NewEnviron{abilityusage}{}[]
+\NewEnviron{spelldescription}{}[]
+
+\newcommand{\render}{
+    \section*{Ability Overview}
+    \abilityoverview
+}

@@ -1,0 +1,129 @@
+% Spell reference package for D&D character sheets
+
+\makeatletter
+
+% Initialize storage
+\def\@allquickref{}
+\def\@alldetailref{}
+\newcounter{@spellcount}
+
+% Track current spell data
+\def\@spellusage{}
+\def\@spelltitle{}
+\def\@spellcastingtime{}
+\def\@spellrange{}
+\def\@spellduration{}
+\def\@spelldescription{}
+
+% Spell category environment
+\newenvironment{spellcategory}{}{}
+
+% Capture category title
+\newcommand{\spellcategorytitle}[1]{%
+    \g@addto@macro\@allquickref{\subsection*{#1}}%
+    \g@addto@macro\@alldetailref{\subsection*{#1}}%
+}
+
+% Individual spell environment with content capture
+\NewEnviron{spell}{%
+    % Reset spell properties
+    \gdef\@spellusage{}%
+    \gdef\@spelltitle{}%
+    \gdef\@spellcastingtime{}%
+    \gdef\@spellrange{}%
+    \gdef\@spellduration{}%
+    \gdef\@spelldescription{}%
+    % Process the body to set all spell properties
+    \BODY%
+    % Store this spell's data in numbered macros for later retrieval
+    \ifx\@spelltitle\empty\else%
+        \stepcounter{@spellcount}%
+        \expandafter\xdef\csname @spell@\the\value{@spellcount}@usage\endcsname{\@spellusage}%
+        \expandafter\xdef\csname @spell@\the\value{@spellcount}@title\endcsname{\@spelltitle}%
+        \expandafter\xdef\csname @spell@\the\value{@spellcount}@casting\endcsname{\@spellcastingtime}%
+        \expandafter\xdef\csname @spell@\the\value{@spellcount}@range\endcsname{\@spellrange}%
+        \expandafter\xdef\csname @spell@\the\value{@spellcount}@duration\endcsname{\@spellduration}%
+        \expandafter\xdef\csname @spell@\the\value{@spellcount}@desc\endcsname{\@spelldescription}%
+    \fi%
+}
+
+% Spell properties
+\newcommand{\spelltitle}[1]{%
+    \gdef\@spelltitle{#1}%
+}
+
+\newcommand{\spellcastingtime}[1]{%
+    \gdef\@spellcastingtime{#1}%
+}
+
+\newcommand{\spellrange}[1]{%
+    \gdef\@spellrange{#1}%
+}
+
+\newcommand{\spellduration}[1]{%
+    \gdef\@spellduration{#1}%
+}
+
+% Spell usage for quick reference - capture environment content
+\NewEnviron{spellusage}{%
+    \xdef\@spellusage{\BODY}%
+}
+
+% Spell description - capture environment content  
+\NewEnviron{spelldescription}{%
+    \xdef\@spelldescription{\BODY}%
+}
+
+% Generate the spell reference by rebuilding from stored data
+\newcommand{\spellreference}{%
+    \clearpage%
+    \section*{Ability Overview}%
+    \begin{itemize}%
+    \@buildquickref%
+    \end{itemize}%
+    %
+    \clearpage%
+    \section*{Spell Reference}%
+    \@builddetailref%
+}
+
+% Helper to build quick ref from stored data
+\newcommand{\@buildquickref}{%
+    \setcounter{@spellcount}{0}%
+    \@buildquickref@loop%
+}
+
+\newcommand{\@buildquickref@loop}{%
+    \stepcounter{@spellcount}%
+    \ifcsname @spell@\the\value{@spellcount}@title\endcsname%
+        \item%
+        \edef\@tempUsage{\csname @spell@\the\value{@spellcount}@usage\endcsname}%
+        \ifx\@tempUsage\empty\else%
+            \@tempUsage: \fi%
+        \csname @spell@\the\value{@spellcount}@title\endcsname%
+        \@buildquickref@loop%
+    \fi%
+}
+
+% Helper to build detail ref from stored data
+\newcommand{\@builddetailref}{%
+    \setcounter{@spellcount}{0}%
+    \@builddetailref@loop%
+}
+
+\newcommand{\@builddetailref@loop}{%
+    \stepcounter{@spellcount}%
+    \ifcsname @spell@\the\value{@spellcount}@title\endcsname%
+        \subsubsection*{\csname @spell@\the\value{@spellcount}@title\endcsname}%
+        \noindent\textbf{Casting Time:} \csname @spell@\the\value{@spellcount}@casting\endcsname\par%
+        \noindent\textbf{Range:} \csname @spell@\the\value{@spellcount}@range\endcsname\par%
+        \noindent\textbf{Duration:} \csname @spell@\the\value{@spellcount}@duration\endcsname\par%
+        \medskip%
+        \noindent\textbf{Description:}\par%
+        \csname @spell@\the\value{@spellcount}@desc\endcsname\par%
+        \medskip%
+        \@builddetailref@loop%
+    \fi%
+}
+
+\makeatother

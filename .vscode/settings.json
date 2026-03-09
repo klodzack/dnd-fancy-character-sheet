@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^pdflatex -interaction=nonstopmode -file-line-error page1\\.tex 2>&1 > log\\.txt$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}

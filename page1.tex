@@ -1,0 +1,289 @@
+\documentclass[10pt]{article}
+\usepackage[margin=0.25in,top=0.2in,bottom=0.15in]{geometry}
+\usepackage{tcolorbox}
+\usepackage{tikz}
+\usepackage{array}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+\usetikzlibrary{positioning,calc,shapes}
+
+\tcbset{
+  headerbox/.style={
+    boxrule=1.5pt,
+    colback=white,
+    colframe=black,
+    arc=2pt,
+    top=2pt,
+    bottom=2pt,
+    left=3pt,
+    right=3pt
+  },
+  simplebox/.style={
+    boxrule=0.8pt,
+    colback=white,
+    colframe=black,
+    arc=0pt,
+    top=3pt,
+    bottom=3pt,
+    left=4pt,
+    right=4pt
+  }
+}
+
+\begin{document}
+
+\begin{tikzpicture}[remember picture, overlay, shift={(0.25in, -0.3in)}]
+  
+  % ===== HEADER BANNER =====
+  \draw[line width=2.5pt, rounded corners=4pt] (0,0) rectangle (7.5,-1);
+  \node[anchor=west, font=\Large\bfseries, inner sep=5pt] at (0.1,-0.5) {Silas Shadowfoot};
+  
+  % Header info table (right side)
+  \node[anchor=east, inner sep=2pt, font=\tiny] at (7.4in,-0.25in) {
+    \begin{tabular}{ccc}
+      \bfseries CLASS \& LEVEL & \bfseries BACKGROUND & \bfseries PLAYER NAME \\
+      Level 7 Rogue & Smuggler & Zack \\
+      \bfseries RACE & \bfseries ALIGNMENT & \bfseries EXP \\
+      Lightfoot Halfling & Neutral Good & $\infty$
+    \end{tabular}
+  };
+  
+\end{tikzpicture}
+
+\vspace{0.45in}
+
+% Main 3-column layout using absolute TikZ positioning
+\begin{tikzpicture}[remember picture, overlay, shift={(0.25in, -1.05in)}]
+  
+  % ===== LEFT COLUMN: ABILITY SCORES (x: 0 to 1.2) =====
+  
+  % STR
+  \node[anchor=north] at (0.6in, 0) {
+    \begin{tcolorbox}[headerbox, width=1.1in, halign=center]
+      \tiny\bfseries STR \\ \Large\bfseries 10 \\ \normalsize (0)
+    \end{tcolorbox}
+  };
+  
+  % DEX
+  \node[anchor=north] at (0.6in, -0.7in) {
+    \begin{tcolorbox}[headerbox, width=1.1in, halign=center]
+      \tiny\bfseries DEX \\ \Large\bfseries 18 \\ \normalsize (+4)
+    \end{tcolorbox}
+  };
+  
+  % CON
+  \node[anchor=north] at (0.6in, -1.4in) {
+    \begin{tcolorbox}[headerbox, width=1.1in, halign=center]
+      \tiny\bfseries CON \\ \Large\bfseries 12 \\ \normalsize (+1)
+    \end{tcolorbox}
+  };
+  
+  % INT
+  \node[anchor=north] at (0.6in, -2.1in) {
+    \begin{tcolorbox}[headerbox, width=1.1in, halign=center]
+      \tiny\bfseries INT \\ \Large\bfseries 12 \\ \normalsize (+1)
+    \end{tcolorbox}
+  };
+  
+  % WIS
+  \node[anchor=north] at (0.6in, -2.8in) {
+    \begin{tcolorbox}[headerbox, width=1.1in, halign=center]
+      \tiny\bfseries WIS \\ \Large\bfseries 12 \\ \normalsize (+1)
+    \end{tcolorbox}
+  };
+  
+  % CHA
+  \node[anchor=north] at (0.6in, -3.5in) {
+    \begin{tcolorbox}[headerbox, width=1.1in, halign=center]
+      \tiny\bfseries CHA \\ \Large\bfseries 16 \\ \normalsize (+3)
+    \end{tcolorbox}
+  };
+  
+  % Inspiration
+  \node[anchor=north] at (0.6in, -4.2in) {
+    \begin{tcolorbox}[headerbox, width=1.1in, halign=center]
+      \tiny\bfseries INSPIRATION \\ 1
+    \end{tcolorbox}
+  };
+  
+  % Prof Bonus
+  \node[anchor=north] at (0.6in, -4.7in) {
+    \begin{tcolorbox}[headerbox, width=1.1in, halign=center]
+      \tiny\bfseries PROF BONUS \\ +3
+    \end{tcolorbox}
+  };
+  
+  % Saving Throws
+  \node[anchor=north, text width=1.05in] at (0.6in, -5.3in) {
+    \begin{tcolorbox}[simplebox, title=\tiny\bfseries SAVING THROWS]
+      \tiny\begin{tabular}{@{}r@{}}
+        STR +1 \\ DEX +4 \\ CON 0 \\ INT 0 \\ WIS +1 \\ CHA +3
+      \end{tabular}
+    \end{tcolorbox}
+  };
+  
+  % Skills
+  \node[anchor=north, text width=1.05in] at (0.6in, -6.8in) {
+    \begin{tcolorbox}[simplebox, title=\tiny\bfseries SKILLS]
+      \tiny\begin{tabular}{@{}l@{}}
+        Acrobatics 10* \\
+        Animal Handling 1 \\
+        Deception 9* \\
+        Insight 1 \\
+        Investigation 4 \\
+        Perception 9* \\
+        Sleight 10* \\
+        Stealth 4
+      \end{tabular}
+    \end{tcolorbox}
+  };
+  
+  % Passive Wisdom
+  \node[anchor=north] at (0.6in, -8.9in) {
+    \begin{tcolorbox}[headerbox, width=1.1in, halign=center]
+      \tiny\bfseries PASSIVE WIS \\ 10
+    \end{tcolorbox}
+  };
+  
+  % Proficiencies
+  \node[anchor=north, text width=1.05in] at (0.6in, -9.5in) {
+    \begin{tcolorbox}[simplebox, title=\tiny\bfseries PROFICIENCIES]
+      \tiny Light Armor, Simple Weapons, Hand Crossbows, Longswords, Rapiers, Shortswords, Thieves' Tools, Common \& Halfling
+    \end{tcolorbox}
+  };
+  
+  % ===== CENTER COLUMN (x: 1.4 to 4) =====
+  
+  % AC diamond
+  \draw[line width=2pt] (2.7in, 0.3in) -- (2.9in, 0.5in) -- (2.7in, 0.7in) -- (2.5in, 0.5in) -- cycle;
+  \node[font=\Large\bfseries] at (2.7in, 0.5in) {17};
+  \node[font=\tiny\bfseries] at (2.7in, 0.05in) {AC};
+  
+  % Initiative
+  \node[anchor=west] at (3.25in, 0.25in) {
+    \begin{tcolorbox}[headerbox, width=0.65in, height=0.4in, halign=center, valign=center]
+      \tiny\bfseries INIT \\ +4
+    \end{tcolorbox}
+  };
+  
+  % Speed
+  \node[anchor=west] at (3.95in, 0.25in) {
+    \begin{tcolorbox}[headerbox, width=0.65in, height=0.4in, halign=center, valign=center]
+      \tiny\bfseries SPEED \\ 25ft
+    \end{tcolorbox}
+  };
+  
+  % Current HP
+  \node[anchor=north, text width=2.2in] at (2.7in, -0.35in) {
+    \begin{tcolorbox}[simplebox, title=\tiny\bfseries CURRENT HIT POINTS]
+      \Large\bfseries 51
+    \end{tcolorbox}
+  };
+  
+  % Temp HP & Hit Dice
+  \node[anchor=west] at (1.5in, -1.15in) {
+    \begin{tcolorbox}[headerbox, width=0.8in, halign=center]
+      \tiny\bfseries TEMP HP \\ 12
+    \end{tcolorbox}
+  };
+  
+  \node[anchor=west] at (2.4in, -1.15in) {
+    \begin{tcolorbox}[headerbox, width=0.8in, halign=center]
+      \tiny\bfseries HIT DICE \\ 5d8
+    \end{tcolorbox}
+  };
+  
+  % Death Saves
+  \node[anchor=north, text width=2.2in] at (2.7in, -1.7in) {
+    \begin{tcolorbox}[simplebox, title=\tiny\bfseries DEATH SAVES]
+      \tiny SUCCESS: $\circ\circ\circ$ \quad FAIL: $\circ\circ\circ$
+    \end{tcolorbox}
+  };
+  
+  % Attacks
+  \node[anchor=north, text width=2.2in] at (2.7in, -2.4in) {
+    \begin{tcolorbox}[simplebox, title=\tiny\bfseries ATTACKS]
+      \tiny\begin{tabular}{lrr}
+        \bfseries NAME & \bfseries ATK & \bfseries DAMAGE \\
+        Rapier & +10 & 1d8+4 P \\
+        Shortbow & +7 & 1d6+4 P
+      \end{tabular} \\
+      \tiny (Rapier +2)
+    \end{tcolorbox}
+  };
+  
+  % Equipment
+  \node[anchor=north, text width=2.2in] at (2.7in, -3.3in) {
+    \begin{tcolorbox}[simplebox, title=\tiny\bfseries EQUIPMENT]
+      \tiny Rapier, Shortbow, Studded Leather, (2) Daggers, Backpack, (791) Ball Bearings, Thieves' Tools, The Faceless Cloak, Jam, 2 Mead
+    \end{tcolorbox}
+  };
+  
+  % Coins
+  \node[anchor=north] at (2.7in, -4.2in) {
+    \begin{tikzpicture}[scale=0.85]
+      % CP
+      \draw[fill=yellow!40, draw=black, line width=0.8pt] (0in,0in) circle (0.3in);
+      \node[font=\tiny\bfseries] at (0in,0in) {0};
+      \node[font=\tiny\bfseries] at (0in,-0.5in) {CP};
+      
+      % EP
+      \draw[fill=gray!40, draw=black, line width=0.8pt] (0.9in,0in) circle (0.3in);
+      \node[font=\tiny\bfseries] at (0.9in,0in) {16};
+      \node[font=\tiny\bfseries] at (0.9in,-0.5in) {EP};
+      
+      % GP
+      \draw[fill=yellow!70, draw=black, line width=0.8pt] (1.8in,0in) circle (0.3in);
+      \node[font=\tiny\bfseries] at (1.8in,0in) {53};
+      \node[font=\tiny\bfseries] at (1.8in,-0.5in) {GP};
+      
+      % PP
+      \draw[fill=blue!30, draw=black, line width=0.8pt] (2.7in,0in) circle (0.3in);
+      \node[font=\tiny\bfseries] at (2.7in,0in) {0};
+      \node[font=\tiny\bfseries] at (2.7in,-0.5in) {PP};
+    \end{tikzpicture}
+  };
+  
+  % ===== RIGHT COLUMN: TRAITS (x: 4.3 to 5.8) =====
+  
+  % Personality Traits
+  \node[anchor=north, text width=1.35in] at (4.95in, 0in) {
+    \begin{tcolorbox}[simplebox, title=\tiny\bfseries PERSONALITY]
+      \tiny I love gold but won't cheat a friend. Few people know the real me.
+    \end{tcolorbox}
+  };
+  
+  % Ideals
+  \node[anchor=north, text width=1.35in] at (4.95in, -1in) {
+    \begin{tcolorbox}[simplebox, title=\tiny\bfseries IDEALS]
+      \tiny I smuggle only to achieve a greater goal that benefits my community.
+    \end{tcolorbox}
+  };
+  
+  % Bonds
+  \node[anchor=north, text width=1.35in] at (4.95in, -2in) {
+    \begin{tcolorbox}[simplebox, title=\tiny\bfseries BONDS]
+      \tiny I give most of my profits to a charitable cause, and I don't like to brag about it.
+    \end{tcolorbox}
+  };
+  
+  % Flaws
+  \node[anchor=north, text width=1.35in] at (4.95in, -3in) {
+    \begin{tcolorbox}[simplebox, title=\tiny\bfseries FLAWS]
+      \tiny \phantom{x}
+    \end{tcolorbox}
+  };
+  
+  % Features & Traits
+  \node[anchor=north, text width=1.35in] at (4.95in, -3.9in) {
+    \begin{tcolorbox}[simplebox, title=\tiny\bfseries FEATURES]
+      \tiny \textbf{Lucky:} Roll 1? Reroll. \textbf{Brave:} Adv vs fear. \textbf{Nimble:} Move through larger creatures. \textbf{Stealthy:} Hide when obscured. \textbf{Sneak:} +3d6 dmg once/turn.
+    \end{tcolorbox}
+  };
+  
+\end{tikzpicture}
+
+\end{document}
