@@ -16,7 +16,6 @@ const { Character } = require('./lib/character');
     await fs.mkdir('./tex', { recursive: true });
     const out = await fs.open('./tex/silas.tex', 'w')
     await out.write('\\documentclass[twocolumn]{article}\n');
-    await out.write('\\raggedbottom\n');
     await out.write('\\usepackage[margin=0.6in]{geometry}\n');
     await out.write('\\begin{document}\n');
     for (const [category, abilities] of Object.entries(abilityCategories)) {
