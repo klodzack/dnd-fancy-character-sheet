@@ -16,6 +16,7 @@ const { Character } = require('./lib/character');
     await fs.mkdir('./tex', { recursive: true });
     const out = await fs.open('./tex/silas.tex', 'w')
     await out.write('\\documentclass[twocolumn]{article}\n');
+    await out.write('\\raggedbottom\n');
     await out.write('\\usepackage[margin=0.6in]{geometry}\n');
     await out.write('\\begin{document}\n');
     for (const [category, abilities] of Object.entries(abilityCategories)) {
@@ -60,6 +61,7 @@ const { Character } = require('./lib/character');
         await out.write(`\\section{${category}}\n`);
 
         for (const ability of abilities) {
+            await out.write('\\noindent\\begin{minipage}{\\columnwidth}\n');
             const type = getAbilityType(ability);
             await out.write(getAbilitySubsection(ability));
             await out.write('\n');
@@ -73,7 +75,10 @@ const { Character } = require('./lib/character');
                 await out.write(`\\noindent\\textbf{Duration}: ${type.duration}\n\n`);
             }
             await out.write(`${ability.description}\n\n`);
+            await out.write('\\end{minipage}\n\n');
         }
+
+        await out.write('\\newpage\n');
     }
 
 
