@@ -18,6 +18,71 @@ const { Character } = require('./lib/character');
     await out.write('\\documentclass[twocolumn]{article}\n');
     await out.write('\\usepackage[margin=0.6in]{geometry}\n');
     await out.write('\\begin{document}\n');
+
+    // Character stats page
+    const abilityScores = char.getAbilityScores();
+    const abilityMods = char.getAbilityModifiers();
+    function modStr(n) { return (n >= 0 ? '+' : '') + n; }
+
+    await out.write('\\begin{center}\n');
+    await out.write(`\\LARGE\\textbf{${char.getName()}}\\\\\n`);
+    await out.write(`\\large ${char.getRace()} ${char.getClass()} (Level ${char.getLevel()})\\\\\n`);
+    await out.write(`${char.getBackground()}\\\\\n`);
+    await out.write(`${char.getAlignment()}\n`);
+    await out.write('\\end{center}\n');
+    await out.write('\\vspace{0.15in}\n');
+
+    await out.write('\\begin{tabular}{ l l l l }\n');
+    await out.write(`AC: & ${char.getArmorClass()} & HP: & ${char.getHitPoints()} ` + '\\\\' + '\n');
+    await out.write(`Speed: & ${char.getSpeed()} & Init: & ${char.getInitiative()} ` + '\\\\' + '\n');
+    await out.write(`Prof Bonus: & ${char.getProficiencyBonus()} & Hit Die: & ${char.getHitDice()} ` + '\\\\' + '\n');
+    await out.write('\\end{tabular}\n');
+    await out.write('\\vspace{0.15in}\n');
+
+    await out.write('\\begin{tabular}{ l c c l c c }\n');
+    await out.write(`Strength & ${abilityScores.Strength} & ${modStr(abilityMods.Strength)} & Dexterity & ${abilityScores.Dexterity} & ${modStr(abilityMods.Dexterity)} ` + '\\\\' + '\n');
+    await out.write(`Constitution & ${abilityScores.Constitution} & ${modStr(abilityMods.Constitution)} & Intelligence & ${abilityScores.Intelligence} & ${modStr(abilityMods.Intelligence)} ` + '\\\\' + '\n');
+    await out.write(`Wisdom & ${abilityScores.Wisdom} & ${modStr(abilityMods.Wisdom)} & Charisma & ${abilityScores.Charisma} & ${modStr(abilityMods.Charisma)} ` + '\\\\' + '\n');
+    await out.write('\\end{tabular}\n');
+
+    // Skills table
+    const skills = char.getSkills();
+    const skillOrder = [
+        ['Acrobatics', 'Acrobatics'],
+        ['Animal Handling', 'AnimalHandling'],
+        ['Arcana', 'Arcana'],
+        ['Athletics', 'Athletics'],
+        ['Deception', 'Deception'],
+        ['History', 'History'],
+        ['Insight', 'Insight'],
+        ['Intimidation', 'Intimidation'],
+        ['Investigation', 'Investigation'],
+        ['Medicine', 'Medicine'],
+        ['Nature', 'Nature'],
+        ['Perception', 'Perception'],
+        ['Performance', 'Performance'],
+        ['Persuasion', 'Persuasion'],
+        ['Religion', 'Religion'],
+        ['Sleight of Hand', 'Sleight of Hand'],
+        ['Stealth', 'Stealth'],
+        ['Survival', 'Survival'],
+    ];
+
+    await out.write('\\section*{Skills}\n');
+    await out.write('\\begin{tabular}{ l c l c }\n');
+    for (let i = 0; i < skillOrder.length; i += 2) {
+        const left = skillOrder[i];
+        const right = skillOrder[i + 1];
+        const leftVal = skills[left[1]];
+        const rightVal = right ? skills[right[1]] : '';
+        const leftCell = `${left[0]} & ${modStr(leftVal)} `;
+        const rightCell = right ? `& ${right[0]} & ${modStr(rightVal)} ` : '& & ';
+        await out.write(leftCell + rightCell + '\\\\' + '\n');
+    }
+    await out.write('\\end{tabular}\n');
+
+    await out.write('\\clearpage\n');
+
     for (const [category, abilities] of Object.entries(abilityCategories)) {
         const hasReference = abilities.some(a => !a.skipReference);
         await out.write(`\\section${hasReference ? '' : '*'}{${hasReference ? '' : '\\phantom{1}\\quad '}${category}}\n`);
