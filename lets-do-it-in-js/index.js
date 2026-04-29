@@ -106,6 +106,7 @@ const { Character } = require('./lib/character');
     }
 
     await out.write('\\clearpage\n');
+    await out.write('\\setcounter{section}{0}\n');
 
     const referenceCategories= Object.fromEntries(
         Array.from(Object.entries(abilityCategories))
