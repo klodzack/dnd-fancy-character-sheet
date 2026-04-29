@@ -1,17 +1,11 @@
-const yaml = require('yaml');
 const fs = require('node:fs/promises');
-const { type } = require('node:os');
-const { get } = require('node:http');
 const { Character } = require('./lib/character');
 
 (async () => {
 
-    const file = await fs.readFile('./characters/silas.yaml', 'utf-8');
-    const data = yaml.parse(file);
+    const char = await Character.fromFile('./characters/silas.yaml');
 
-    const char = Character.from(data);
-
-    const abilityCategories = categorizeBy(data.abilities, 'category');
+    const abilityCategories = categorizeBy(char.getAbilitiesList(), 'category');
 
     await fs.mkdir('./tex', { recursive: true });
     const out = await fs.open('./tex/silas.tex', 'w')

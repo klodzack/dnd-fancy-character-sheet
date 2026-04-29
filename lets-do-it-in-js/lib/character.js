@@ -1,3 +1,5 @@
+const fs = require('node:fs/promises');
+const yaml = require('yaml');
 const { mapValues } = require('./utils');
 
 class Character {
@@ -5,6 +7,12 @@ class Character {
         const c = new Character()
         c.data = data;
         return c;
+    }
+
+    static async fromFile(filePath) {
+        const file = await fs.readFile(filePath, 'utf-8');
+        const data = yaml.parse(file);
+        return Character.from(data);
     }
 
     getName() {
@@ -65,6 +73,11 @@ class Character {
 
     getPassivePerception() {
         return this.data.passivePerception;
+    }
+
+    /** Return the raw abilities array from the YAML */
+    getAbilitiesList() {
+        return this.data.abilities || [];
     }
 
     getAbilities() {
