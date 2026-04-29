@@ -15,7 +15,7 @@ const { Character } = require('./lib/character');
 
     await fs.mkdir('./tex', { recursive: true });
     const out = await fs.open('./tex/silas.tex', 'w')
-    await out.write('\\documentclass[twocolumn]{article}\n');
+    await out.write('\\documentclass{article}\n');
     await out.write('\\usepackage[margin=0.6in]{geometry}\n');
     await out.write('\\begin{document}\n');
 
@@ -82,6 +82,7 @@ const { Character } = require('./lib/character');
     await out.write('\\end{tabular}\n');
 
     await out.write('\\clearpage\n');
+    await out.write('\\twocolumn\n');
 
     for (const [category, abilities] of Object.entries(abilityCategories)) {
         const hasReference = abilities.some(a => !a.skipReference);
