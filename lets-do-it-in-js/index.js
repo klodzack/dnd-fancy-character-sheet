@@ -31,8 +31,18 @@ const { Character } = require('./lib/character');
     await out.write(`AC: & ${char.getArmorClass()} & HP: & ${char.getHitPoints()} ` + '\\\\' + '\n');
     await out.write(`Speed: & ${char.getSpeed()} & Init: & ${char.getInitiative()} ` + '\\\\' + '\n');
     await out.write(`Prof Bonus: & ${char.getProficiencyBonus()} & Hit Die: & ${char.getHitDice()} ` + '\\\\' + '\n');
+    await out.write(`Spell Save DC: & ${char.getSpellSaveDC()}` + '\\\\' + '\n');
     await out.write('\\end{tabular}\n');
     await out.write('\\vspace{0.15in}\n');
+
+    await out.write('\\section*{Saving Throws}\n');
+    const savingThrows = char.getSavingThrows();
+    await out.write('\\begin{tabular}{ l c l c }\n');
+    await out.write(`Strength & +${savingThrows.Strength} & Dexterity & +${savingThrows.Dexterity} ` + '\\\\' + '\n');
+    await out.write(`Constitution & +${savingThrows.Constitution} & Intelligence & +${savingThrows.Intelligence} ` + '\\\\' + '\n');
+    await out.write(`Wisdom & +${savingThrows.Wisdom} & Charisma & +${savingThrows.Charisma} ` + '\\\\' + '\n');
+    await out.write('\\end{tabular}\n');
+    await out.write('\\\\\n');
 
     await out.write('\\section*{Ability Scores}\n');
     await out.write('\\begin{tabular}{ l c c l c c }\n');

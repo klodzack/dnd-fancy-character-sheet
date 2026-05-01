@@ -75,6 +75,10 @@ class Character {
         return this.data.passivePerception;
     }
 
+    getSpellSaveDC() {
+        return this.getAbilities().Intelligence.modifier + this.getProficiencyBonus() + 8;
+    }
+
     /** Return the raw abilities array from the YAML */
     getAbilitiesList() {
         return this.data.abilities || [];
@@ -152,8 +156,6 @@ class Character {
         const abilities = this.getAbilityModifiers();
         const bonuses = this.getProficiencyBonuses().savingThrows;
 
-        console.log({ abilities, bonuses })
-
         const ret = {
             Strength: abilities.Strength + (bonuses.Strength ?? 0),
             Dexterity: abilities.Dexterity + (bonuses.Dexterity ?? 0),
@@ -169,8 +171,6 @@ class Character {
     getSkills() {
         const abilities = this.getAbilityModifiers();
         const bonuses = this.getProficiencyBonuses().skills;
-
-        console.log({ abilities, bonuses })
 
         const ret = {
             Acrobatics: abilities.Dexterity + (bonuses.Acrobatics ?? 0),
@@ -194,6 +194,11 @@ class Character {
         }
         this.getSkills = () => ret;
         return ret;
+    }
+
+    getSpellSaveDC() {
+        // Arcane Trickster uses Intelligence for spellcasting
+        return 8 + this.getProficiencyBonus() + this.getAbilityModifier('Intelligence');
     }
 }
 
