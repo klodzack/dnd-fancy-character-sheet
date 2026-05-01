@@ -12,6 +12,7 @@ const { Character } = require('./lib/character');
     await out.write('\\documentclass{article}\n');
     await out.write('\\usepackage[margin=0.6in]{geometry}\n');
     await out.write('\\begin{document}\n');
+    await out.write('\\thispagestyle{empty}\n')
 
     // Character stats page
     const abilityScores = char.getAbilityScores();
@@ -113,6 +114,7 @@ const { Character } = require('./lib/character');
     await out.write('\\mbox{}\n');
     await out.write('\\clearpage\n');
     await out.write('\\twocolumn\n');
+    await out.write('\\setcounter{page}{1}\n');
 
     for (const [category, abilities] of Object.entries(abilityCategories)) {
         const hasReference = abilities.some(a => !a.skipReference);
