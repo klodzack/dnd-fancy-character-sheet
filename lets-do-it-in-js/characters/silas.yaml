@@ -112,6 +112,17 @@ abilities:
       Advantage on deception checks; can change my voice
     description: |-
       Advantage on deception checks while worn; twice per day, can change my voice to a voice I've heard
+  - name: The Bag Of Bones
+    category: Manipulation
+    ability: {}
+    oneline: |-
+      Can draw a helper skeleton from my bag of bones. Can add dead animals to the bag.
+    description: |-
+      Once per day you may draw from the bag.
+
+      An animated skeletal companion will be made your friend for 7 days. After which the bones no longer animate.
+
+      Dead animals may be added to the bag to change your odds.
   - name: Mage Hand Legerdemain
     category: Manipulation
     cantrip:
