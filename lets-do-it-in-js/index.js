@@ -78,34 +78,33 @@ const { Character } = require('./lib/character');
     await out.write('\\end{tabular}\n');
     await out.write('\\\\\n');
 
-    const others = char.getOtherProficiencies().length ? char.getOtherProficiencies().join(', ') : 'None';
-    await out.write(`\\noindent\\textbf{Other Proficiencies}: ${others}\\\\` + '\n');
-
-
     await out.write('\\begin{tabular}{ l c }\n');
     await out.write(`Passive Wisdom (Perception) & ${char.getPassivePerception()} \\\\` + '\n');
     await out.write('\\end{tabular}\n');
     await out.write('\\\\\n');
 
+    await out.write('\\section*{Other Proficiencies}\n');
+    await out.write('\\raggedright\n');
+    for (const prof of char.getOtherProficiencies()) {
+        await out.write(`\\mbox{\\textbullet\\quad ${prof}\\quad}\n`);
+    }
+
+
     const equipment = char.getEquipment && char.getEquipment();
-    if (equipment && equipment.length > 0) {
-        await out.write('\\noindent\\textbf{Equipment}:\\begin{itemize}\n');
-        for (const item of equipment) {
-            if (typeof item === 'object') {
-                if (item.count !== undefined) {
-                    await out.write(`\\item ${item.count} x ${item.name}\n`);
-                } else if (item.name) {
-                    await out.write(`\\item ${item.name}\n`);
-                } else {
-                    await out.write(`\\item ${JSON.stringify(item)}\n`);
-                }
+    await out.write('\\section*{Equipment}\n');
+    await out.write('\\raggedright\n');
+    for (const item of equipment) {
+        if (typeof item === 'object') {
+            if (item.count !== undefined) {
+                await out.write(`\\mbox{\\textbullet\\quad ${item.count} x ${item.name}\\quad}\n`);
+            } else if (item.name) {
+                await out.write(`\\mbox{\\textbullet\\quad ${item.name}\\quad}\n`);
             } else {
-                await out.write(`\\item ${item}\n`);
+                await out.write(`\\mbox{\\textbullet\\quad ${JSON.stringify(item)}\\quad}\n`);
             }
+        } else {
+            await out.write(`\\mbox{\\textbullet\\quad ${item}\\quad}\n`);
         }
-        await out.write('\\end{itemize}\n');
-    } else {
-        await out.write('\\noindent\\textbf{Equipment}: None\\\\\n');
     }
 
 
