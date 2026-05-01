@@ -1,5 +1,5 @@
 name: Silas Shadowfoot
-level: 7
+level: 8
 class: Rogue
 archetype: Arcane Trickster
 background: Smuggler
@@ -11,13 +11,13 @@ armorClass: 17
 initiative: 4
 speed: 25
 hitPoints: 51
-hitDice: 7d8
+hitDice: 8d8
 passivePerception: 10
 abilityModifiers:
   Strength: 10
   Dexterity: 18 # Halfling: Your Dexterity score increases by 2 (so 4 here)
   Constitution: 12
-  Intelligence: 12
+  Intelligence: 14
   Wisdom: 12
   Charisma: 16 # Lightfoot Halfling: +2 on Charisma
 proficiencies:
@@ -25,11 +25,11 @@ proficiencies:
     Dexterity: proficient
     Intelligence: proficient
   skills:
-    Acrobatics: proficient
+    Acrobatics: expertise
     Deception: expertise
     Investigation: proficient
     Persuasion: expertise
-    Stealth: proficient
+    Stealth: expertise
   other:
     - Light Armor
     - Simple Weapons
@@ -187,19 +187,6 @@ abilities:
       Humanoid target must succeed on Con save or move up to 15ft in the direction you choose.
     description: |-
       Your gesture forces one humanoid you can see within range to make a Constitution saving throw. On a failed save, the target must move up to its speed in a direction you choose. In addition, you can cause the target to drop whatever it is holding. This spell has no effect on a humanoid that is immune to being charmed.
-  - name: Disguise Self
-    category: Deception
-    spell:
-      level: 1
-      castingTime: 1 action
-      range: Self
-      duration: 1 Hour
-    oneline: |-
-      Change appearance of self  to look like another person.
-    description: |-
-      You make yourself – including your clothing, armor, weapons, and other belongings on your person – look different until the spell ends or until you use your action to dismiss it. You can seem 1 foot shorter or taller and can appear thin, fat, or in between. You can’t change your body type, so you must adopt a form that has the same basic arrangement of limbs. Otherwise, the extent of the illusion is up to you.
-
-      The changes wrought by this spell fail to hold up to physical inspection. For example, if you use this spell to add a hat to your outfit, objects pass through the hat, and anyone who touches it would feel nothing or would feel your head and hair. If you use this spell to appear thinner than you are, the hand of someone who reaches out to touch you would bump into you while it was seemingly still in midair. To discern that you are disguised, a creature can use its action to inspect your appearance and must succeed on an Intelligence (Investigation) check against your spell save DC.
   - name: Id Insinuation
     category: Damage++
     spell:
@@ -211,6 +198,21 @@ abilities:
       Target must succeed on Wis save or be incapacitated and take 1d12 psychic damage each turn.
     description: |-
       You unleash a torrent of conflicting desires in the mind of one creature you can see within range, impairing its ability to make decisions. The target must succeed on a Wisdom saving throw or be incapacitated. At the end of each of its turns, it takes 1d12 psychic damage, and it can then make another Wisdom saving throw. On a success, the spell ends on the target.
+  - name: Thunderwave
+    category: Damage++
+    spell:
+      level: 1
+      castingTime: 1 action
+      range: Self (15 foot cube)
+      duration: Instantaneous
+    oneline: |-
+      AOE: Each creature in 15-foot cube around you must succeed on Con saveor take 2d8 thunder damage and be pushed 10ft away. Upcasting adds 1d8 per level.
+    description: |-
+      A wave of thunderous force sweeps out from you. Each creature in a 15-foot cube originating from you must make a Constitution saving throw. On a failed save, a creature takes 2d8 thunder damage and is pushed 10 feet away from you. On a successful save, the creature takes half as much damage and isn’t pushed.
+
+      In addition, unsecured objects that are completely within the area of effect are automatically pushed 10 feet away from you by the spell’s effect, and the spell emits a thunderous boom audible out to 300 feet.
+
+      \textbf{\textit{At Higher Levels.}} When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d8 for each slot level above 1st.
   - name: Suggestion
     category: Manipulation
     spell:
@@ -241,3 +243,16 @@ abilities:
       You magically twist space around another creature you can see within range. The target must succeed on a Constitution saving throw (the target can choose to fail), or the target is teleported to an unoccupied space of your choice that you can see within range. The chosen space must be on a surface or in a liquid that can support the target without the target having to squeeze.
 
       \textbf{\textit{At Higher Levels.}} When you cast this spell using a spell slot of 3rd level or higher, the range of the spell increases by 30 feet for each slot level above 2nd.
+  - name: Invisibility
+    category: Deception
+    spell:
+      level: 2
+      castingTime: 1 action
+      range: Touch
+      duration: Concentration, up to 1 hour
+    oneline: |-
+      Target (could be you) becomes invisible until it attacks or casts a spell.
+    description: |-
+      A creature you touch becomes invisible until the spell ends. Anything the target is wearing or carrying is invisible as long as it is on the target’s person. The spell ends for a target that attacks or casts a spell.
+
+      \textbf{\textit{At Higher Levels.}} When you cast this spell using a spell slot of 3rd level or higher, you can target one additional creature for each slot level above 2nd.
