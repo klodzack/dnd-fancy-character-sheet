@@ -33,13 +33,14 @@ const { Character } = require('./lib/character');
     await out.write('\\end{tabular}\n');
     await out.write('\\vspace{0.15in}\n');
 
+    await out.write('\\section*{Ability Scores}\n');
     await out.write('\\begin{tabular}{ l c c l c c }\n');
     await out.write(`Strength & ${abilityScores.Strength} & ${modStr(abilityMods.Strength)} & Dexterity & ${abilityScores.Dexterity} & ${modStr(abilityMods.Dexterity)} ` + '\\\\' + '\n');
     await out.write(`Constitution & ${abilityScores.Constitution} & ${modStr(abilityMods.Constitution)} & Intelligence & ${abilityScores.Intelligence} & ${modStr(abilityMods.Intelligence)} ` + '\\\\' + '\n');
     await out.write(`Wisdom & ${abilityScores.Wisdom} & ${modStr(abilityMods.Wisdom)} & Charisma & ${abilityScores.Charisma} & ${modStr(abilityMods.Charisma)} ` + '\\\\' + '\n');
     await out.write('\\end{tabular}\n');
+    await out.write('\\\\\n');
 
-    // Skills table
     const skills = char.getSkills();
     const skillOrder = [
         ['Acrobatics', 'Acrobatics'],
@@ -74,7 +75,42 @@ const { Character } = require('./lib/character');
         await out.write(leftCell + rightCell + '\\\\' + '\n');
     }
     await out.write('\\end{tabular}\n');
+    await out.write('\\\\\n');
 
+    const others = char.getOtherProficiencies().length ? char.getOtherProficiencies().join(', ') : 'None';
+    await out.write(`\\noindent\\textbf{Other Proficiencies}: ${others}\\\\` + '\n');
+
+
+    await out.write('\\begin{tabular}{ l c }\n');
+    await out.write(`Passive Wisdom (Perception) & ${char.getPassivePerception()} \\\\` + '\n');
+    await out.write('\\end{tabular}\n');
+    await out.write('\\\\\n');
+
+    const equipment = char.getEquipment && char.getEquipment();
+    if (equipment && equipment.length > 0) {
+        await out.write('\\noindent\\textbf{Equipment}:\\begin{itemize}\n');
+        for (const item of equipment) {
+            if (typeof item === 'object') {
+                if (item.count !== undefined) {
+                    await out.write(`\\item ${item.count} x ${item.name}\n`);
+                } else if (item.name) {
+                    await out.write(`\\item ${item.name}\n`);
+                } else {
+                    await out.write(`\\item ${JSON.stringify(item)}\n`);
+                }
+            } else {
+                await out.write(`\\item ${item}\n`);
+            }
+        }
+        await out.write('\\end{itemize}\n');
+    } else {
+        await out.write('\\noindent\\textbf{Equipment}: None\\\\\n');
+    }
+
+
+    await out.write('\\clearpage\n');
+    await out.write('\\thispagestyle{empty}\n');
+    await out.write('\\mbox{}\n');
     await out.write('\\clearpage\n');
     await out.write('\\twocolumn\n');
 

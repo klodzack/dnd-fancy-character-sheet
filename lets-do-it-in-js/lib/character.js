@@ -113,7 +113,12 @@ class Character {
 
     /** The unstructured proficiencies */
     getOtherProficiencies() {
-        return this.data.proficiencies.other ?? [];
+        return this.data.proficiencies?.other ?? [];
+    }
+
+    /** Equipment list */
+    getEquipment() {
+        return this.data.equipment ?? [];
     }
 
     /** Proficiency tree, where each value is a number for the bonus amount */
